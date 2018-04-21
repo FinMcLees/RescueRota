@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/main.min.css">
+  <link rel="icon" href="../favicon.png" type="image/x-icon">
+  <title>RescueRota | Dashboard</title>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <ul class="main-nav">
+          <li><a href="#" id="logo">Rescue<span>Rota</span></a></li>
+          <li><a class="active" href="index.html">Dashboard</a></li>
+          <li><a href="fullRota.html">Full Rota</a></li>
+          <li><a href="userControl.html">User Control</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container-body">
+      <div class="CreateRota">
+        <h1>Create Rota</h1>
+
+        <h2>Series Rota</h2>
+
+        <p>The series rota includes both points and icebreaker series racing, click on the "New Series" button to get started.</p>
+
+        <button id="seriesRotaModalBtn" class="btn" onclick="seriesRota()">New Series</button>
+
+        <div class="sModal" id="SeriesRotaModal">
+          <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Create an Series Rota</h2>
+
+            <select id="seriesType" name="seriesType">
+              <option value="" disabled selected hidden>Select a Series type...</option>
+              <option value="Icebreaker">Icebreaker</option>
+              <option value="Points">Points</option>
+            </select>
+
+            <p>Select the number of boats for each race:</p>
+            <select id="seriesBoatNo" name="seriesBoatNo">
+              <option value="2">2 Rescue Boats</option>
+              <option value="3">3 Rescue Boats</option>
+            </select>
+
+            <p>Select the number of people per boat:</p>
+            <select id="seriesPersonnelNo" name="seriesPersonnelNo">
+              <option value="2">2 Personnel</option>
+              <option value="3">3 Personnel</option>
+            </select>
+
+            <p>Select the series start date (1st Sunday):</p>
+            <input id="seriesStartDate" class="date-input" type="date" name="seriesStart">
+
+            <p>Select the series finish date (Last Sunday):</p>
+            <input id="seriesEndDate" class="date-input" type="date" name="seriesEnd"><br>
+
+            <input id="submitBtn" class="btn" type="submit" onclick="seriesUserFetch()">
+          </div>
+        </div>
+
+        <h2>Event Rota</h2>
+
+        <p>The event rota covers all events hosted at the yacht club, click on the "New Event" button to get started.</p>
+
+        <button id="eventRotaModalBtn" class="btn" onclick="eventRota()">New Event</button>
+
+        <div class="eModal" id="EventRotaModal">
+          <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Create a Event Rota</h2>
+
+            <label for="lastName">Rota Name:</label><br>
+            <input class="addUserInput input" id="eventRotaName" type="text" palceholder="Last Name">
+
+            <p>Select the number of total boats for each race:</p>
+            <select id="eventBoatNo" name="boatNo">
+              <option value="1">1 Boat</option>
+              <option value="2">2 Boats</option>
+              <option value="3">3 Boats</option>
+              <option value="4">4 Boats</option>
+              <option value="5">5 Boats</option>
+              <option value="6">6 Boats</option>
+              <option value="7">7 Boats</option>
+              <option value="8">8 Boats</option>
+              <option value="9">9 Boats</option>
+            </select>
+
+            <p>Select the number of Marklayers:</p>
+            <select id="eventBoatNoML" name="MarklayerNo">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+
+            <p>Select the number of crew per boat (don't include extras):</p>
+            <select id="eventBoatPersonnelNo" name="PersonnelNo">
+              <option value="2">2 Personnel</option>
+              <option value="3">3 Personnel</option>
+            </select>
+
+            <p>When does the event start:</p>
+            <input id="eventDateStart" class="date-input" type="date" name="seriesStart">
+
+            <p>How many days does the event last?:</p>
+            <select id="eventDateLength" name="eventLength">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select><br>
+
+            <input class="btn" type="submit" value="Create" onclick="eventUserFetch()">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="UpComing">
+        <h1>Up Coming</h1>
+
+        <div class="card">
+          <div class="card-content">
+            <h2>Sunday</h2>
+            <p>Boat 1, 2, 3... etc</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h2>Sunday</h2>
+            <p>Boat 1, 2, 3... etc</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h2>Sunday</h2>
+            <p>Boat 1, 2, 3... etc</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <hr>
+    <p>RescueRota, Finlay McLees &copy; 2018</p>
+  </footer>
+
+<script src="assets/js/vendors.js" charset="utf-8"></script>
+<script src="assets/js/modal.js" charset="utf-8"></script>
+<script src="assets/js/dashboardController.js" charset="utf-8"></script>
+</body>
+</html>

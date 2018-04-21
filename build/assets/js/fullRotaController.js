@@ -1,0 +1,1 @@
+var urlUsers="http://localhost:8888/db/users.json",urlSeries="http://localhost:8888/db/series.json",urlEvents="http://localhost:8888/db/events.json";

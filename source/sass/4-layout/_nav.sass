@@ -1,0 +1,51 @@
+/* Header Bar */
+
+header
+  width: 100%
+  background: $lime
+  box-shadow: 0 6px 40px 0 rgba(0, 0, 0, 0.5)
+
+.main-nav
+  display: flex
+  flex-wrap: wrap
+
+  li
+    list-style: none
+
+    @media only screen and (max-width: 840px)
+      flex: 100%
+      text-align: center
+
+
+  li:first-child
+    margin-right: auto
+
+    @media only screen and (max-width: 840px)
+      flex: 100%
+      text-align: center
+
+  span
+    font-weight: 900
+
+  a
+    font-size: 20px
+    padding: 20px 5px 0px 5px
+    text-decoration: none
+
+  #logo
+    font-size: 35px
+    padding-top: 12px
+
+  #logo:hover::after
+    width: 0%
+
+  a::after
+    content: ''
+    display: block
+    width: 0
+    height: 2px
+    background: #fff
+    transition: width .3s
+
+  a:hover::after
+    width: 100%
