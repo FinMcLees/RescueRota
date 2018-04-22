@@ -1,16 +1,19 @@
 // Defines the url variable for the server connection
-var urlUsers = "http://localhost:8888/db/users.json";
-var urlSeries = "http://localhost:8888/db/series.json";
-var urlEvents = "http://localhost:8888/db/events.json";
+var urlUsers = "http://192.168.1.125:8888/db/users.json";
+var urlSeries = "http://192.168.1.125:8888/db/series.json";
+var urlEvents = "http://192.168.1.125:8888/db/event.json";
 
 // Detects if the user has clicked on the dropdown menu for user edit
 var userListDropDown = document.getElementById('userList');
 
-// Watches the Delete and Save button for user editing
+// Watches the Delete and Save and Add buttons for user editing
 var saveUserBtn = document.getElementById('saveUserSubmit');
 var deleteUserBtn = document.getElementById('deleteUserSubmit');
+var addUserBtn = document.getElementById('addUserSubmit');
+
 saveUserBtn.addEventListener('click', userFetchSaveData);
 deleteUserBtn.addEventListener('click', userFetchDeleteData);
+addUserBtn.addEventListener('click', )
 
 // Get edit user form elements
 var firstNameEditForm = document.getElementById('editFirstName');
@@ -71,7 +74,6 @@ function renderUserData(data) {
       FAEditForm.checked = data[i].qualifications.FA;
       MLEditForm.checked = data[i].qualifications.ML;
       var currentSelectedUser = data[i];
-      // deleteUserData(currentSelectedUser);
     }
   }
 }
@@ -149,11 +151,11 @@ function saveUserData(data) {
           "ML": data[i].qualifications.ML
         }
       }
+
+      console.log(userObj);
     }
   }
 }
-
-
 
 // Event functions
 // Fetches the event json list using an XML Http request
@@ -169,6 +171,40 @@ function eventFetch() {
   eventRequest.send();
 }
 
+function eventPost() {
+  var XHR = new XMLHttpRequest();
+
+  // Bind the FormData object and the form element
+  var FD = new FormData(eventobj);
+
+  // Define what happens on successful data submission
+  XHR.addEventListener("load", function(event) {
+    alert(event.target.responseText);
+  });
+
+  // Define what happens in case of error
+  XHR.addEventListener("error", function(event) {
+    alert('Oops! Something went wrong.');
+  });
+
+  // Set up our request
+  XHR.open("POST", "http://localhost:8888/db/event.json");
+
+  // The data sent is what the user provided in the form
+  XHR.send(FD);
+}
+
+// Access the form element...
+var form = document.getElementById("myForm");
+
+// ...and take over its submit event.
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  sendData();
+});
+});
+
 //Series Functions
 //Fetch the series json list using an XML Http request
 function seriesFetch() {
@@ -181,4 +217,8 @@ function seriesFetch() {
   };
 
   seriesRequest.send();
+}
+
+function seriesPost(){
+
 }

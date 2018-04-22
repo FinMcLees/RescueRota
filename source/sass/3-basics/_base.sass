@@ -9,9 +9,7 @@ html
 *:after
   box-sizing: inherit
 
-
 body
-  //delete the background to apply your won style
   background: white
   font-size: 14px
   line-height: 1.6
@@ -20,6 +18,7 @@ body
   -webkit-font-smoothing: antialiased
   -webkit-text-size-adjust: 100%
 
+// Dashboard Styling
 
 .wrapper
   display: grid
@@ -44,3 +43,32 @@ body
 
 section
   display: -webkit-box
+
+// FullRota Styling
+
+#rotaFullDisplay
+  margin-left: 15%
+  margin-right: 15%
+  padding: auto
+
+
+.wrapper-fullrota
+  display: flex
+  flex-wrap: wrap
+  text-align: center
+  align-items: center
+
+
+  .item
+    margin-top: 25px
+    width: 250px
+    padding: 8px
+    border: 3px solid $lime
+
+  .search
+    flex: 100%
+
+  .card
+    margin: 15px 25px 15px 25px
+    flex: 45%
+    align-items: center

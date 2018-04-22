@@ -103,7 +103,7 @@ function eventRotaDefine(data) {
       }
       mlBoatNo--;
       boatFill--;
-    } else if (data[i].qualifications.PBL2 && data[i].qualifications.ML == false && reqBoatNo > mlBoatNo && boatFill > 0 && data[i].used != true) {
+    } else if (data[i].qualifications.PBL2 && reqBoatNo > mlBoatNo && boatFill > 0 && data[i].used != true) {
       for (var a = 0; a < personnelPerBoat; a++) {
         var selector = 1;
         if (selector = 1) {

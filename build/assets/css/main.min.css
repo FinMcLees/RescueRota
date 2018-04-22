@@ -217,6 +217,28 @@ body {
 section {
   display: -webkit-box; }
 
+#rotaFullDisplay {
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: auto; }
+
+.wrapper-fullrota {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center; }
+  .wrapper-fullrota .item {
+    margin-top: 25px;
+    width: 250px;
+    padding: 8px;
+    border: 3px solid #1FE6B7; }
+  .wrapper-fullrota .search {
+    flex: 100%; }
+  .wrapper-fullrota .card {
+    margin: 15px 25px 15px 25px;
+    flex: 45%;
+    align-items: center; }
+
 .btn {
   width: 180px;
   padding: 4px;
@@ -290,7 +312,7 @@ header {
         flex: 100%;
         text-align: center; } }
   .main-nav span {
-    font-weight: 900; }
+    font-weight: 700; }
   .main-nav a {
     font-size: 20px;
     padding: 20px 5px 0px 5px;
