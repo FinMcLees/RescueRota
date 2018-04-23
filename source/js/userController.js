@@ -13,7 +13,6 @@ var addUserBtn = document.getElementById('addUserSubmit');
 
 saveUserBtn.addEventListener('click', userFetchSaveData);
 deleteUserBtn.addEventListener('click', userFetchDeleteData);
-addUserBtn.addEventListener('click', )
 
 // Get edit user form elements
 var firstNameEditForm = document.getElementById('editFirstName');

@@ -36,34 +36,36 @@
 
         <div class="sModal" id="SeriesRotaModal">
           <div class="modal-content">
+
             <span class="closeBtn">&times;</span>
             <h2>Create an Series Rota</h2>
 
-            <select id="seriesType" name="seriesType">
+            <select id="seriesType" name="seriesType" required>
               <option value="" disabled selected hidden>Select a Series type...</option>
               <option value="Icebreaker">Icebreaker</option>
               <option value="Points">Points</option>
             </select>
 
             <p>Select the number of boats for each race:</p>
-            <select id="seriesBoatNo" name="seriesBoatNo">
+            <select id="seriesBoatNo" name="seriesBoatNo" required>
               <option value="2">2 Rescue Boats</option>
               <option value="3">3 Rescue Boats</option>
             </select>
 
             <p>Select the number of people per boat:</p>
-            <select id="seriesPersonnelNo" name="seriesPersonnelNo">
+            <select id="seriesPersonnelNo" name="seriesPersonnelNo" required>
               <option value="2">2 Personnel</option>
               <option value="3">3 Personnel</option>
             </select>
 
             <p>Select the series start date (1st Sunday):</p>
-            <input id="seriesStartDate" class="date-input" type="date" name="seriesStart">
+            <input id="seriesStartDate" class="date-input" type="date" name="seriesStart" required>
 
             <p>Select the series finish date (Last Sunday):</p>
-            <input id="seriesEndDate" class="date-input" type="date" name="seriesEnd"><br>
+            <input id="seriesEndDate" class="date-input" type="date" name="seriesEnd" required><br>
 
             <input id="submitBtn" class="btn" type="submit" onclick="seriesUserFetch()">
+
           </div>
         </div>
 
@@ -75,14 +77,15 @@
 
         <div class="eModal" id="EventRotaModal">
           <div class="modal-content">
+
             <span class="closeBtn">&times;</span>
             <h2>Create a Event Rota</h2>
 
             <label for="lastName">Rota Name:</label><br>
-            <input class="addUserInput input" id="eventRotaName" type="text" palceholder="Last Name">
+            <input class="addUserInput input" id="eventRotaName" type="text" palceholder="Last Name" required>
 
             <p>Select the number of total boats for each race:</p>
-            <select id="eventBoatNo" name="boatNo">
+            <select id="eventBoatNo" name="boatNo" required>
               <option value="1">1 Boat</option>
               <option value="2">2 Boats</option>
               <option value="3">3 Boats</option>
@@ -95,7 +98,7 @@
             </select>
 
             <p>Select the number of Marklayers:</p>
-            <select id="eventBoatNoML" name="MarklayerNo">
+            <select id="eventBoatNoML" name="MarklayerNo" required>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -105,16 +108,16 @@
             </select>
 
             <p>Select the number of crew per boat (don't include extras):</p>
-            <select id="eventBoatPersonnelNo" name="PersonnelNo">
+            <select id="eventBoatPersonnelNo" name="PersonnelNo" required>
               <option value="2">2 Personnel</option>
               <option value="3">3 Personnel</option>
             </select>
 
             <p>When does the event start:</p>
-            <input id="eventDateStart" class="date-input" type="date" name="seriesStart">
+            <input id="eventDateStart" class="date-input" type="date" name="seriesStart" required>
 
             <p>How many days does the event last?:</p>
-            <select id="eventDateLength" name="eventLength">
+            <select id="eventDateLength" name="eventLength" required>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -125,6 +128,7 @@
             </select><br>
 
             <input class="btn" type="submit" value="Create" onclick="eventUserFetch()">
+
           </div>
         </div>
 

@@ -30,7 +30,9 @@ function seriesUserFetch()
   usersRequest.send();
 }
 
+
 function eventRotaDefine(data) {
+
   // Grab the input elements
   var nameEvent = document.getElementById('eventRotaName').value;
   var reqBoatNo = document.getElementById('eventBoatNo').value;
@@ -39,6 +41,7 @@ function eventRotaDefine(data) {
   var startDate = document.getElementById('eventDateStart').value;
   var eventLength = document.getElementById('eventDateLength').value;
 
+  // Instantiate the event object
   var eventobj = {
     "EventName": nameEvent,
     "NumberOfBoats": reqBoatNo,
@@ -51,28 +54,43 @@ function eventRotaDefine(data) {
     "RBoatCrew": {}
   }
 
+  // Set the boatFill equal to the reqBoatNo
   boatFill = reqBoatNo;
+
   console.log("Personnel per boat is set at: " + personnelPerBoat);
 
-  // Maybe....
+  // Sorts the drivers for the Marklayer Boats as well as the drivers for the Rescue Boats
   for (var i = 0; i < data.length; i++) {
+    // Loops through all of the objects within the imported data file which is the users.json file
     if (data[i].qualifications.PBL2 && data[i].qualifications.ML && data[i].age >= 16 && boatFill > 0 && mlBoatNo > 0 && data[i].used != true) {
+      // If a user has a PowerBoat Level 2 Qualification and a Marklayer Qualificaiton and the age is greater than or equal to 16 and
+      //Boatfill is greater than 0 and the Marklayer Boat number is greater than 0 and they have not already been used, then the for loop runs
       for (var a = 0; a < personnelPerBoat; a++) {
+        // Loops until it is equal to the number of people in a boat, therefore the for loop fills a boat
         var selector = 1;
+        // Makes sure that this if statement only runs once
         if (selector = 1) {
           eventobj.MLBoatDriver[boatFill] = data[i].firstName + " " + data[i].lastName;
+          // Sets the Marklayer Boat Driver property in the event object equal to the first and last name of the currently selected user
           data[i].used = true;
+          // Sets the used property of the currently selected user to true so that they are not used again
           selector--;
         }
       }
       mlBoatNo--;
       boatFill--;
     } else if (data[i].qualifications.PBL2 && data[i].age >= 16 && data[i].qualifications.ML == false && reqBoatNo > mlBoatNo && boatFill > 0 && data[i].used != true) {
+      // If a user has a Powerboard Level 2 Qualifcation and the Required Boat Number is greater than the Marklayer Boat Number
+      // and boatFill is greater than 0 and the used property of the used is false then the for loop runs
       for (var a = 0; a < personnelPerBoat; a++) {
+        // Loops until it is equal to the number of people in a boat, therefore the for loop fills a boat
         var selector = 1;
+        // Makes sure that this if statement only runs once
         if (selector = 1) {
           eventobj.RBoatDriver[boatFill] = data[i].firstName + " " + data[i].lastName;
+          // Sets the Rescue Boat Driver property in the event object equal to the first and last name of the currently selected user
           data[i].used = true;
+          // Sets the used property of the currently selected user to true so that they are not used again
           selector--;
         }
       }
@@ -80,7 +98,7 @@ function eventRotaDefine(data) {
     }
   }
 
-  // Grab the input elements
+  // Grab the input elements again so that any changes made above
   var nameEvent = document.getElementById('eventRotaName').value;
   var reqBoatNo = document.getElementById('eventBoatNo').value;
   var mlBoatNo = document.getElementById('eventBoatNoML').value;
@@ -90,25 +108,45 @@ function eventRotaDefine(data) {
 
   boatFill = reqBoatNo;
 
-  // Maybe not...
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].qualifications.PBL2 && boatFill > 0 && mlBoatNo > 0 && data[i].used != true) {
-      for (var a = 0; a < personnelPerBoat; a++) {
+  // Sorts the Crew for both the Marklying Boat and the Rescue Boat
+  for (var i = 0; i < data.length; i++)
+  {
+  // Loops through all of the objects within the imported data file which is the users.json file
+    if (data[i].qualifications.PBL2 && boatFill > 0 && mlBoatNo > 0 && data[i].used != true)
+    {
+    // If a user has a PowerBoat Level 2 Qualification and Boatfill is greater than 0 and the Marklayer Boat number is greater than 0
+    // and they have not already been used, then the for loop runs
+      for (var a = 0; a < personnelPerBoat; a++)
+      {
+      // Loops until it is equal to the number of people in a boat, therefore the for loop fills a boat
         var selector = 1;
-        if (selector = 1) {
+        // Makes sure that this if statement only runs once
+        if (selector = 1)
+        {
           eventobj.MLBoatCrew[boatFill] = data[i].firstName + " " + data[i].lastName;
+          // Sets the Marklayer Boat Crew property in the event object equal to the first and last name of the currently selected user
           data[i].used = true;
+          // Sets the used property of the currently selected user to true so that they are not used again
           selector--;
         }
       }
       mlBoatNo--;
       boatFill--;
-    } else if (data[i].qualifications.PBL2 && reqBoatNo > mlBoatNo && boatFill > 0 && data[i].used != true) {
-      for (var a = 0; a < personnelPerBoat; a++) {
+    } else if (data[i].qualifications.PBL2 && reqBoatNo > mlBoatNo && boatFill > 0 && data[i].used != true)
+    {
+      // If a user has a Powerboard Level 2 Qualifcation and the Required Boat Number is greater than the Marklayer Boat Number
+      // and boatFill is greater than 0 and the used property of the used is false then the for loop runs
+      for (var a = 0; a < personnelPerBoat; a++)
+      {
+        // Loops until it is equal to the number of people in a boat, therefore the for loop fills a boat
         var selector = 1;
-        if (selector = 1) {
+        // Makes sure that this if statement only runs once
+        if (selector = 1)
+        {
           eventobj.RBoatCrew[boatFill] = data[i].firstName + " " + data[i].lastName;
+          // Sets the Rescue Boat Crew property in the event object equal to the first and last name of the currently selected user
           data[i].used = true;
+          // Sets the used property
           selector--;
         }
       }
@@ -117,6 +155,7 @@ function eventRotaDefine(data) {
   }
   console.log(eventobj);
   console.log(data);
+
 }
 
 function seriesRotaDefine(data) {
@@ -127,8 +166,6 @@ function seriesRotaDefine(data) {
   var personnelPerBoat = document.getElementById('seriesPersonnelNo').value;
   var startDate = document.getElementById('seriesStartDate').value;
   var endDate = document.getElementById('seriesEndDate').value;
-
-  window.alert(seriesName + 'series Created!');
 
   var eModal = document.getElementById('EventRotaModal');
   eModal.style.display = 'none';
@@ -149,6 +186,8 @@ function seriesRotaDefine(data) {
 
   function getCountOfDay(d1, d2, dayToSearch, count)
   {
+    // Create two new date objects, a count, define a week with shorthand days and define the dayIndex
+    // as the nurmeric index value of the selected day
     var dateObj1 = d1;
     var dateObj2 = d2;
     var count = 0;
@@ -180,9 +219,10 @@ function seriesRotaDefine(data) {
 
   console.log("Number of Sundays is: " + datesRequired);
 
-  // Maybe....
+  // Sorts the drivers for the Rescue Boats as well as the crew for the Rescue Boats
   for (var a = 0; a < datesRequired; a++)
   {
+    // Loops through all of the objects within the imported data file which is the users.json file
     boatFill = reqBoatNo;
     for (var i = 0; i < data.length; i++)
     {
@@ -218,6 +258,7 @@ function seriesRotaDefine(data) {
   console.log(a);
   console.log(data);
   console.log(seriesobj);
+
 }
 
 function displaySeries(){
