@@ -222,17 +222,25 @@ function seriesRotaDefine(data) {
   // Sorts the drivers for the Rescue Boats as well as the crew for the Rescue Boats
   for (var a = 0; a < datesRequired; a++)
   {
-    // Loops through all of the objects within the imported data file which is the users.json file
+    // Loops round the number of times that datesRequired is equal to, which is the number of Sunday's in the date range
     boatFill = reqBoatNo;
     for (var i = 0; i < data.length; i++)
     {
+      // Loops through all of the objects within the imported data file which is the users.json file
       if (data[i].qualifications.PBL2 && data[i].age >= 16 && boatFill > 0 && data[i].used != true)
+      // If a user has a PowerBoat Level 2 Qualification and the age is greater than or equal to 16 Boatfill is greater than 0
+      //and they have not already been used, then the for loop runs
       {
         for (var b = 0; b < personnelPerBoat; b++)
         {
+          // Loops until it is equal to the number of people in a boat, therefore the for loop fills a boat
           seriesobj.races[a].date = dateArray.shift();
+          // Pops the first item off the date array and sets it equal to the data property in the seriesobj
           seriesobj.races[a].RBoatDriver = data[i].firstName + " " + data[i].lastName;
+          // Sets the First Name and Last Name of the currently selected object equal to the Rescue Boat Driver property of the selected
+          // race array index in the series object
           data[i].used = true;
+          // Sets the used property of the data object to true so that the person is not re-used later on
         }
         boatFill--;
       }
@@ -242,14 +250,21 @@ function seriesRotaDefine(data) {
 
     for (var i = 0; i < data.length; i++)
     {
+      // Loops through all of the objects within the imported data file which is the users.json file
       if (data[i].qualifications.PBL2 && boatFill > 0 && data[i].used != true)
       {
+        // If the Powerboat Level 2 qualification is equal to true and the boatFill is greater than 0 and the used property is false then run the for loop
         for (var b = 0; b < personnelPerBoat; b++)
         {
+          // Loops until it is equal to the number of people in a boat, therefore the for loop fills a boat
+          // Debugging purposes
           console.log("This is run number: " + a);
           console.log(seriesobj);
           seriesobj.races[a].RBoatCrew = data[i].firstName + " " + data[i].lastName;
+          // Sets the First Name and Last Name of the currently selected object equal to the Rescue Boat Driver property of the selected
+          // race array index in the series object
           data[i].used = true;
+          // Sets the used property of the data object to true so that the person is not re-used later on
         }
         boatFill--;
       }
